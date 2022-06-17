@@ -64,7 +64,7 @@ For this process after data is present in a centralized data store in the cloud 
 - Azure DevOps
 - Git Hubs
 
-resources:[Azure CI/CD](https://azure.microsoft.com/en-us/services/devops/#overview)
+resources: [Azure CI/CD](https://azure.microsoft.com/en-us/services/devops/#overview)
 
 So you can incrementally develop and deliver your ETL processes before publishing the finished product.
 
@@ -89,3 +89,72 @@ Azure Data Factory is composed of below key components.
 - Integration Runtimes
 
 These components work together to provide the platform on which you can compose data-driven workflows with steps to move and transform data.
+
+### Pipeline
+
+1. A Data Factory might have one or more pipelines. 
+2. A pipeline is a logical grouping of activies that performs a unit of work.
+3. The activities in a pipeline perform a task.
+
+We perform these three things together. The activiteis in a pipeline can be chained together to operate
+sequentially, or they can operate independently in parallel.
+- Sequentially
+- Parallel
+
+### Mapping data flows
+
+The mapping data flows allow you to create and manage graphs of data transformation logic that you can; - - Transform any-sized data
+- Build-up a reuseable library as routines
+- Execute those process in a scaled-out manner from ADF pipelines
+- Execute on Spark cluster that spins-up and down when you need it.
+
+### Activity
+
+Activities represent a processing step in a pipeline.
+- Data movement activities
+- Data transformation activities
+- Control flow activities
+
+resources for [`Azure Activities`](https://docs.microsoft.com/en-us/azure/data-factory/concepts-pipelines-activities?tabs=data-factory)
+
+### Dataset
+
+Datasets represent data structures within the data stores, which simply point to or reference the data you want to use in your activities as inputs or outputs.
+
+### Linked services
+
+Linked services are much like `Connection Strings`, which define the connection information that's needed for Data Factory to connect to external resources.
+
+Linked services are used for two purposes in Data Factory.
+- [**Data store** ](https://docs.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-overview)
+- [**Compute resource**](https://docs.microsoft.com/en-us/azure/architecture/guide/technology-choices/compute-decision-tree)
+
+### Integration Runtime
+
+The Integration runtime provides the bridge between the activity and linked services by provides the compute environment where the activity either runs on or gets dispatched from.
+
+This way, the activity can be performed in the region closest possible to the target data store or compute service in the most performant way while meeting security and compliance needs.
+
+### Triggers
+
+[**Triggers**](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings?tabs=csharp) represent the unit of processing that determines when a pipeline execution needs to be kicked off. There are different types of triggers for different types of events.
+
+### Pipeline runs
+
+A pipeline run is an instance of the pipeline execution. Pipeline runs are typically instantiated by passing the arguments to the parameters that are defined in pipelines. The arguments can be passed manually or within the trigger definition.
+
+### Parameters
+
+1. Parameters are the key-value pairs of read-only configuration.
+2. Parameters are defined in the pipeline.
+3. The arguments for the defined parameters are pass during execution from the run context.
+4. The trigger or pipeline will execute the run context.
+5. The Activites within the pipeline consume the parameter values
+
+A dataset is a strongly typed parameter and a reusable/referenceable entity. An activity can reference datasets and can consume the properties that are defined in the dataset definition.
+
+A linked service is also a strongly typed parameter that contains the connection information to either a data store or a compute environment. It is also a reusable/referenceable entity.
+
+### COntrol flow
+
+An orchestration of pipeline activities that can chaining activities in a sequence, branching, defined parameters at the pipeline level. it's still can pass the arguments while invoking the pipeline on-demand or from a trigger.

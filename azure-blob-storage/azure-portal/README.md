@@ -1,6 +1,9 @@
 # AZURE PORTAL
 ---
 
+Reference: [Work with blobs by Azure portal](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal)
+
+
 **Upload, download, and list blobs with the Azure portal**
 
 ## Prerequisites

@@ -1,6 +1,22 @@
 # INTRODUCTION TO DATA FACTORY
 ---
 
+1. [ Description. ](#desc)
+2. [ Usage tips. ](#usage)
+
+<a name="desc"></a>
+## 1. Description
+
+sometext
+
+<a name="usage"></a>
+## 2. Usage tips
+
+sometext
+
+
+
+
 ## What is Azure Data Factory?
 
 On this day on big data we have a lot of type of data:
@@ -47,12 +63,12 @@ The next step is to move the data as needed to a centralized location for subseq
 
 **Without Data Factory**, Enterprises need to cusdom data movement components or write custom services to intregrate these data sources and processing. So it's hard and maybe cannot possible to do it for the full syetem.
 
-**With Data Factory**, The [**Copy Activity**](https://docs.microsoft.com/en-us/azure/data-factory/copy-activity-overview) in a data pipeline can help to move data from both on-premises and cloud source data 
+**With Data Factory**, The [`Copy Activity`](https://docs.microsoft.com/en-us/azure/data-factory/copy-activity-overview) in a data pipeline can help to move data from both on-premises and cloud source data 
 stores to a centralization data store in the cloud for further analysis.
 
 ## Transform and enrich
 
-For this process after data is present in a centralized data store in the cloud already, Using **ADF mapping data flows** can enable data engineers to build and maintain data transformation graphs that execute on Spark without needing to understand Spart clusters or Spark programing. But we still can code to make transformation by hand and executing on compute sevices such as:
+For this process after data is present in a centralized data store in the cloud already, Using `ADF mapping data flows` can enable data engineers to build and maintain data transformation graphs that execute on Spark without needing to understand Spart clusters or Spark programing. But we still can code to make transformation by hand and executing on compute sevices such as:
 - HDInsight Hadoop
 - Spark
 - Data Lake Analytics

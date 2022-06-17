@@ -25,3 +25,6 @@ Data Factory contains a series of interconnected systems that provide a complete
 data engineers.
 
 ![CodeFree ETL as a service](https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/introduction%20to%20Data%20Factory/images/overview.svg)
+
+## Connect and collect
+

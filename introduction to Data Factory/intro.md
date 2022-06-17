@@ -19,7 +19,6 @@ Big data requires a service that can orchestrate and operationalize processes to
 built for these complex hybrid extract-transform-load(ETL), extract-load-transform(ELT), and data integration projects.
 
 ## How does it work?
----
 
 Data Factory contains a series of interconnected systems that provide a complete end-to-end platform for
 data engineers.
@@ -28,3 +27,50 @@ data engineers.
 
 ## Connect and collect
 
+In the enterprises level, they have data of various types that are located in disparate sources:
+- On-premises
+- Cloud
+
+And various data types such as:
+- Structure
+- Unstructure
+- Semmi-structure
+
+The first step in building an information productionn system is to connect to all the required sources of
+data and processing:
+- Software-as-a-service(SaaS)
+- databases
+- file shares
+- FTP web services
+
+The next step is to move the data as needed to a centralized location for subsequent processing.
+
+**Without Data Factory**, Enterprises need to cusdom data movement components or write custom services to intregrate these data sources and processing. So it's hard and maybe cannot possible to do it for the full syetem.
+
+**With Data Factory**, The [**Copy Activity**](https://docs.microsoft.com/en-us/azure/data-factory/copy-activity-overview) in a data pipeline can help to move data from both on-premises and cloud source data 
+stores to a centralization data store in the cloud for further analysis.
+
+## Transform and enrich
+
+For this process after data is present in a centralized data store in the cloud already, Using **ADF mapping data flows** can enable data engineers to build and maintain data transformation graphs that execute on Spark without needing to understand Spart clusters or Spark programing. But we still can code to make transformation by hand and executing on compute sevices such as:
+- HDInsight Hadoop
+- Spark
+- Data Lake Analytics
+- Machine Learning
+
+## CI/CD and publish
+
+[Data Factory offers support for CI/CD](https://docs.microsoft.com/en-us/azure/data-factory/continuous-integration-delivery) of you data pipeline using:
+- Azure DevOps
+- Git Hubs
+
+So you can incrementally develop and deliver your ETL processes before publishing the finished product.
+
+## Monitor
+
+Azure Data Factory has buid in-support for pipeline monitoring via:
+- [Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/overview)
+- [API](https://docs.microsoft.com/en-us/azure/azure-monitor/essentials/rest-api-walkthrough)
+- [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.monitor/?view=azps-8.0.0)
+- [Azure Monitor logs](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/data-platform-logs)
+- [Health panels on the Azure portal](https://azure.microsoft.com/en-us/features/service-health/)

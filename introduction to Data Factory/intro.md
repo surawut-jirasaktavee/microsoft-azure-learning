@@ -1,22 +1,6 @@
 # INTRODUCTION TO DATA FACTORY
 ---
 
-1. [ Description. ](#desc)
-2. [ Usage tips. ](#usage)
-
-<a name="desc"></a>
-## 1. Description
-
-sometext
-
-<a name="usage"></a>
-## 2. Usage tips
-
-sometext
-
-
-
-
 ## What is Azure Data Factory?
 
 On this day on big data we have a lot of type of data:
@@ -90,3 +74,16 @@ Azure Data Factory has buid in-support for pipeline monitoring via:
 - [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.monitor/?view=azps-8.0.0)
 - [Azure Monitor logs](https://docs.microsoft.com/en-us/azure/azure-monitor/logs/data-platform-logs)
 - [Health panels on the Azure portal](https://azure.microsoft.com/en-us/features/service-health/)
+
+
+## Top-level concepts
+
+Azure Data Factory is composed of below key components.
+- Pipelines
+- Activites
+- Datasets
+- Linked services
+- Data Flows
+- Integration Runtimes
+
+These components work together to provide the platform on which you can compose data-driven workflows with steps to move and transform data.

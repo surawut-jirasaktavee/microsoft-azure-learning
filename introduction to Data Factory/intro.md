@@ -24,4 +24,5 @@ built for these complex hybrid extract-transform-load(ETL), extract-load-transfo
 Data Factory contains a series of interconnected systems that provide a complete end-to-end platform for
 data engineers.
 
-![CodeFree ETL as a service](introduction to Data Factory/images/overview.svg)
+![CodeFree ETL as a service](https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/introduction%20to%20Data%20Factory/images/overview.svg)
+<img src=https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/introduction%20to%20Data%20Factory/images/overview.svg>

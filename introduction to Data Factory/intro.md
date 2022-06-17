@@ -155,6 +155,6 @@ A dataset is a strongly typed parameter and a reusable/referenceable entity. An 
 
 A linked service is also a strongly typed parameter that contains the connection information to either a data store or a compute environment. It is also a reusable/referenceable entity.
 
-### COntrol flow
+### Control flow
 
 An orchestration of pipeline activities that can chaining activities in a sequence, branching, defined parameters at the pipeline level. it's still can pass the arguments while invoking the pipeline on-demand or from a trigger.

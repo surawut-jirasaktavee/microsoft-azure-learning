@@ -18,3 +18,48 @@ information, and then running the install command.
 ````bash
 brew update && brew install azure-cli
 ````
+
+**IMPORTANT**
+The Azure CLI has a dependency on the Homebrew `python@3.10` package, and will install it.
+
+For **Troubleshooting** please see file an issue on github [here](https://github.com/Azure/azure-cli/issues)
+
+## Unable to find Python or installed packages
+
+There may be a minor version mismatch or other issue during homebrew installation. The CLI doesn't use a Python virtual environment, so it relies on finding the installed Python version
+A possible fix is to install and relink the `python@3.10 dependency from homebrew.
+
+````bash
+brew update && brew install python@3.10 && brew upgrade python@3.10
+brew link --overwrite python@3.10
+````
+
+## UpdateThe 
+
+CLI is regularly updated with bug fixes, improvements, new features, and preview functionality. A new release is available roughly every three weeks.
+
+The CLI provides an in-tool command to update to the latest version:
+
+````Azure CLI
+az upgrade
+````
+
+You can also update you local Homebrew repo and then upgrade the `azure-cli` package.
+
+````Bash
+brew update && brew upgrade azure-cli
+````
+
+## Uninstall
+
+````Bash
+brew uninstall azure-cli
+````
+
+## Remove data
+
+````Bash
+rm -rf ~/.azure
+````
+
+

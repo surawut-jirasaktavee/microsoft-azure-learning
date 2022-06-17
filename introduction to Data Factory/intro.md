@@ -64,6 +64,8 @@ For this process after data is present in a centralized data store in the cloud 
 - Azure DevOps
 - Git Hubs
 
+resources:[Azure CI/CD](https://azure.microsoft.com/en-us/services/devops/#overview)
+
 So you can incrementally develop and deliver your ETL processes before publishing the finished product.
 
 ## Monitor

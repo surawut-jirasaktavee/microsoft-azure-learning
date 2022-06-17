@@ -158,3 +158,8 @@ A linked service is also a strongly typed parameter that contains the connection
 ### Control flow
 
 An orchestration of pipeline activities that can chaining activities in a sequence, branching, defined parameters at the pipeline level. it's still can pass the arguments while invoking the pipeline on-demand or from a trigger.
+
+### Variables
+
+Variables can be used inside of pipelines to store temporary values and can also be used in conjunction with parameters to enable passing values between pipelines, data flows, and other activities.
+

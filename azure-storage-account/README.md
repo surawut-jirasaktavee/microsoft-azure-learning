@@ -27,8 +27,8 @@ You can interacting with Azure Storage by user-interface tools:
 - Azure portal
 - Azure Storage Explorer 
 
-
-
-
+[CREATE STORAGE ACCOUNT](https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/azure-storage-account/create-storage-account.md)
+[BENEFITS OF AZURE STORAGE](https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/azure-storage-account/benefits.md)
+[AZURE STORAGE DATA SERVICES](https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/azure-storage-account/azure-storage-data-services.md)
 
 

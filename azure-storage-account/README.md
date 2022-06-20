@@ -1,5 +1,6 @@
 # INTRODUCTION TO AZURE STORAGE
 ---
+reference: [introduction to Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction)
 
 The `Azure Storage platform` is Microsoft's cloud storage solution for modern data storage scenarios.
 They offer the following for a variety of data objects in the cloud:

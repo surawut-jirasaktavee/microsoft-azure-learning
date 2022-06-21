@@ -52,3 +52,32 @@ Typically determined by:
 We could use `Storage account` tools to obtain the performance and security that need while minimizing costs.
 A typical strategy is to start with an analysis of your data and create partitions that shard characteristics like location,
 billing, and replication strategy, and then crate one storage account for each partition.
+
+## Choose your account settings
+
+The three settings that applys to the account itself, rather than to the data stored in the account:
+* Name
+* Deployment model
+* Account kind
+
+These settings impact how you manage your account and the cost of the services within it.
+
+**Name**
+* Every storage account has a name
+* The name must be **globally unique** with Azure
+* Use only **lowercase** `letters` and `digits`
+* Must be between `3 - 24` characters
+
+**Deployment model**
+A deployment model is the system Azure uses to organize your resources. The model defines the API that you use to `create`, `configure`, and `manage` those resourecs. The current model that Azure uses is **Resourc Manager**
+
+**Account kind**
+Storage account kind is a set of policies that determine which data services you can include in the account and the pricing of those services. There are three kinds of storage accounts:
+
+* **StorageV2 (general purpose v2)** the current offering that supports storage types and all of the latest features.
+* **Storage (general purpose v1)** a legacy kind that supports all storage types but may not support all features
+* **Blob storage**: a legacy kind that allows only block blobs and append blobs
+
+Microsoft recommends that you use the **General-purpose v2** option for new storage accounts.
+
+**NOTE:** The core advice here is to choose the Resource Manager deployment model and the StorageV2 (general purpose v2) account kind for all your storage accounts.

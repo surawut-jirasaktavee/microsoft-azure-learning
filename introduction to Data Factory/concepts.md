@@ -55,6 +55,7 @@ The following control flow activities are supported.
     
         
  ## Linked services
+ ref: [docs.microsoft](https://docs.microsoft.com/en-us/azure/data-factory/concepts-linked-services?tabs=data-factory)
  
 * Before you create a dataset, you must create a **linked service** to link your data store to the Data Factory or Synapse Workspace. 
 * `Linked services` are much like **connection strings**, which define the connection information needed for the service to connect to external resources.

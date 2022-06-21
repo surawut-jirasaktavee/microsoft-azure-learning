@@ -72,7 +72,7 @@ The following diagram shows the relationships among pipeline, activity, dataset,
     "properties": {
         "type": "<Type of the linked service>",
         "typeProperties": {
-              "<data store or compute-specific type properties>"
+              "<data store or compute-specific type properties>" //("connectionString")
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

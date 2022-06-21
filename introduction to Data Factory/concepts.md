@@ -66,8 +66,7 @@ The following diagram shows the relationships among pipeline, activity, dataset,
 
 ### Linked service with JSON format:
 
-Markup :  `code()`
-````JSON
+```JSON
 {
     "name": "<Name of the linked service>",
     "properties": {
@@ -81,5 +80,5 @@ Markup :  `code()`
         }
     }
 }
-````
+```
 

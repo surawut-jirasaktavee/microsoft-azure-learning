@@ -2,6 +2,7 @@
 ---
 
 ## Pipelines and Activities
+ref: [docs.microsoft](https://docs.microsoft.com/en-us/azure/data-factory/concepts-pipelines-activities?tabs=data-factory)
 
 **Overview**
 
@@ -10,6 +11,26 @@
 * The `Pipeline` allows to manage the activities as a set instead of each one individually.
 * Deploy and schedule the pipeline instead of the activities indenpently.
 * The `Activities` in a pipeline define actions to perform on the data.
+
+### Pipeline with JSON format
+
+```JSON
+{
+    "name": "PipelineName",
+    "properties":
+    {
+        "description": "pipeline description",
+        "activities":
+        [
+        ],
+        "parameters": {
+        },
+        "concurrency": <your max pipeline concurrency>,
+        "annotations": [
+        ]
+    }
+}
+```
 
 **For example**:
 
@@ -26,6 +47,26 @@ The relationship between pipeline, activity, and dataset.
   * Folders
   * Documents
 **Note**: Must be create a dataset before use it with activities in a pipeline.
+
+### Activity with JSON format
+
+```JSON
+{
+    "name": "Execution Activity Name",
+    "description": "description",
+    "type": "<ActivityType>",
+    "typeProperties":
+    {
+    },
+    "linkedServiceName": "MyLinkedService",
+    "policy":
+    {
+    },
+    "dependsOn":
+    {
+    }
+}
+```
 
 Azure Data Factory and Azure Synapse Analytics have three groupings of activities:
 ### Data movement activites
@@ -60,7 +101,7 @@ The following control flow activities are supported.
 * Before you create a dataset, you must create a **linked service** to link your data store to the Data Factory or Synapse Workspace. 
 * `Linked services` are much like **connection strings**, which define the connection information needed for the service to connect to external resources.
 
-The dataset represents the structure of the data within the linked data stores and the linked service defines the connection to the data source.
+The linked service defines the connection to the data source.
 
 The following diagram shows the relationships among pipeline, activity, dataset, and linked service in the service.
 ![relationship btw pipeline, activity, dataset, and linked service](https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/introduction%20to%20Data%20Factory/images/relationship-between-data-factory-entities.png)
@@ -83,3 +124,69 @@ The following diagram shows the relationships among pipeline, activity, dataset,
 }
 ```
 
+## Dataset
+ref [docs.microsoft](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services?tabs=data-factory)
+
+The dataset represents the structure of the data within the linked data stores
+
+### Dataset with JSON format
+
+```JSON
+{
+    "name": "<name of dataset>",
+    "properties": {
+        "type": "<type of dataset: DelimitedText, AzureSqlTable etc...>",
+        "linkedServiceName": {
+                "referenceName": "<name of linked service>",
+                "type": "LinkedServiceReference",
+        },
+        "schema":[
+
+        ],
+        "typeProperties": {
+            "<type specific property>": "<value>",
+            "<type specific property 2>": "<value 2>",
+        }
+    }
+}
+```
+
+The service supports many different types of datasets, depending on the data stores you use:
+* Arvo
+* Binary
+* CSV
+* Excel
+* JSON
+* ORC
+* Parquet
+* XML
+
+Find the list of supported data stores from [`Connector overview`](https://docs.microsoft.com/en-us/azure/data-factory/connector-overview)
+
+For examlple with CSV file in **DelimitedText** format
+
+```JSON
+{
+    "name": "DelimitedTextInput",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "AzureBlobStorage",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "DelimitedText",
+        "typeProperties": {
+            "location": {
+                "type": "AzureBlobStorageLocation",
+                "fileName": "input.log",
+                "folderPath": "inputdata",
+                "container": "adfgetstarted"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "quoteChar": "\""
+        },
+        "schema": []
+    }
+}
+```

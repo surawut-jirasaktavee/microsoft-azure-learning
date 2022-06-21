@@ -163,3 +163,4 @@ An orchestration of pipeline activities that can chaining activities in a sequen
 
 Variables can be used inside of pipelines to store temporary values and can also be used in conjunction with parameters to enable passing values between pipelines, data flows, and other activities.
 
+[ALL DATA FACTORY CONCEPT](https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/introduction%20to%20Data%20Factory/concepts.md)

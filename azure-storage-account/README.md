@@ -54,3 +54,4 @@ You can interacting with Azure Storage by user-interface tools:
 - [BENEFITS OF AZURE STORAGE](https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/azure-storage-account/benefits.md)
 - [AZURE STORAGE DATA SERVICES](https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/azure-storage-account/azure-storage-data-services.md)
 - [TYPES OF STORAGE ACCOUNTS](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview)
+- [STORAGE ACCOUNT SETTINGS](https://github.com/surawut-jirasaktavee/microsoft-azure-learning/blob/main/azure-storage-account/storage-account-setting.md)

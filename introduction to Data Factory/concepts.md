@@ -404,6 +404,7 @@ In `Data Factory` and `Synapse` pipeline:
 It's referenced by the linked service or activity, and provides the compute environment where the activity is either run directly or dispatched. This allows the activity to be performed in the closest possible region to the target data store or compute service to maximize performance while also allowing flexibility to meet security and compliance requirements.
 
 **Integration runtime types**
+
 * Azure
 * Self-hosted
 * Azure-SSIS
@@ -417,16 +418,19 @@ The capabilities and network support for each the integration runtime types:
 | Azure-SSI   | SSIS packages execution    | SSIS package execution   |
  
 ### Azure integration runtime 
+
 An Azure integration runtime can:
 * Run Data Flows in Azure
 * Run copy activities between cloud data store
 * Dispatch transform activites in a public network [transform activities](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime#azure-integration-runtime)
  
 **Azure IR network environment**
+
 1. Azure Integration Runtime supports connecting to data stores and compute services with public accesible endpoints.
 2. Enabling Managed Virtual Network, Azure IR supports connecting to data stores using private link service in private network environment.
 
 **Azure IR compute resource and scaling**
+
 Azure interration runtime provides:
 * Fully managed
 * Severless compute
@@ -440,14 +444,17 @@ Azure interration runtime provides:
 * lightweight operation to route the activity to the target compute service
 
 ### Self-hosted integration runtime
+
 A self-hosted IR is capable of:
 * Running copy activity between a cloud data stores and a data store in private network
 * Dispatching the transform activities against compute resources in on-premises or Azure Virtual Network [transform activities](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime#self-hosted-integration-runtime)
 
 **Self-hosted IR network environment**
+
 The self-hosted integration runtime only makes outbound HTTP-based connections to the internet. Need to install a self-hosted IR in on-premises environment behind a firewall, or inside a virtual private network.
 
 **Self-hosted IR compute resourec and scaling**
+
 This self-hosted IR only supported on a Windows OS. Can install a self-hosted IR on an on-premises machine or virtual machine inside a private network.
 For high availability and scalability can scale out the self-hosted IR by associatng the logical instance with multiple on-premises in active-active mode.
 

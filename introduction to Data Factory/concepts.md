@@ -190,3 +190,230 @@ For examlple with CSV file in **DelimitedText** format
     }
 }
 ```
+
+## Pipeline execution and triggers
+
+ref: [docs.microsotf](https://docs.microsoft.com/en-us/azure/data-factory/concepts-pipeline-execution-triggers)
+
+* A pipeline run in `Azure Data Factory` and `Azure Synapse` defines an instance of a pipeline execution.
+* Each pipeline run has a unique run ID. A run ID is a GUID that uniquely definees that particular pipeline run.
+* Pipeline runs are typically instantiated by passing arguments to parameters that you difine in the pipeline.
+* Pipeline can either manually or by using a trigger.
+**NOTE**: If `Manully trigger` the pipeline, it will execute immediately. Otherwise if choose `New/Edit`, you will be prompted with the add triggers window to either choose an existing trigger to edit, or create a new trigger.
+
+### Manual execution (on-demand) with JSON
+
+ref [docs.microsoft](https://docs.microsoft.com/en-us/azure/data-factory/concepts-pipeline-execution-triggers#manual-execution-on-demand-with-json)
+
+The manual execution of a pipeline is also referred to as on-demand execution.
+For example with basic pipeline `copyPipeline` the following JSON definition shows this sample pipeline
+
+```JSON
+{
+    "name": "copyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
+                    },
+                    "sink": {
+                        "type": "BlobSink"
+                    }
+                },
+                "name": "CopyBlobtoBlob",
+                "inputs": [
+                    {
+                        "referenceName": "sourceBlobDataset",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "sinkBlobDataset",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
+        ],
+        "parameters": {
+            "sourceBlobContainer": {
+                "type": "String"
+            },
+            "sinkBlobContainer": {
+                "type": "String"
+            }
+        }
+    }
+}
+```
+
+In the JSON definition, the pipeline takes two parameters. **sourceBlobContainer** and **sinkBlobContainer**. You pass values to these parameters at runtime.
+
+The method following can manually run pipeline by using:
+* .NET SDK
+* Azure PowerShell module
+* REST API
+* Python SDK
+
+### Trigger execution with JSON
+
+Trigger represent a unit of processing that determines when a pipeline execution needs to be kicked off.
+For now the sevice supports three types of trigger.
+* Schedule trigger: A trigger that invokes a pipeline on a wall-clock schedule.
+* Tumbling window trigger: A trigger that operates on a periodic interval, while also retaining state.
+* Event-based trigger: A trigger that responds to an event.
+
+**Basic trigger definition**
+
+```JSON
+{
+    "properties": {
+        "name": "MyTrigger",
+        "type": "<type of trigger>",
+        "typeProperties": {...},
+        "pipelines": [
+            {
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "<Name of your pipeline>"
+                },
+                "parameters": {
+                    "<parameter 1 Name>": {
+                        "type": "Expression",
+                        "value": "<parameter 1 Value>"
+                    },
+                    "<parameter 2 Name>": "<parameter 2 Value>"
+                }
+            }
+        ]
+    }
+}
+```
+
+**Schedule trigger with JSON**
+
+A schedule trigger runs pipelines on a wall-clock schedule. This trigger supports periodic and advanced calendar options. 
+The schedule trigger is flexible:
+* The dataset pattern in agnostic
+* The trigger doesn't discern between time-series and non time-series data.
+* [More information](https://docs.microsoft.com/en-us/azure/data-factory/how-to-create-schedule-trigger)
+
+**Schedule trigger definition**
+When you create a schedule trigger, you specify scheduling and recurrence by using a JSON definition.
+Schedule trigger kick off a pipeline run include a pipeline reference of the particular pipeline in the trigger definition:
+* Pipelines and triggers have a many-to-many relationship
+* Multiple triggers can kick off a single pipeline
+* A single triggle can kick off multiple pipelines
+* [Schema overview](https://docs.microsoft.com/en-us/azure/data-factory/concepts-pipeline-execution-triggers#schema-overview)
+
+```JSON
+{
+  "properties": {
+    "type": "ScheduleTrigger",
+    "typeProperties": {
+      "recurrence": {
+        "frequency": <<Minute, Hour, Day, Week, Year>>,
+        "interval": <<int>>, // How often to fire
+        "startTime": <<datetime>>,
+        "endTime": <<datetime>>,
+        "timeZone": "UTC",
+        "schedule": { // Optional (advanced scheduling specifics)
+          "hours": [<<0-24>>],
+          "weekDays": [<<Monday-Sunday>>],
+          "minutes": [<<0-60>>],
+          "monthDays": [<<1-31>>],
+          "monthlyOccurrences": [
+            {
+              "day": <<Monday-Sunday>>,
+              "occurrence": <<1-5>>
+            }
+          ]
+        }
+      }
+    },
+  "pipelines": [
+    {
+      "pipelineReference": {
+        "type": "PipelineReference",
+        "referenceName": "<Name of your pipeline>"
+      },
+      "parameters": {
+        "<parameter 1 Name>": {
+          "type": "Expression",
+          "value": "<parameter 1 Value>"
+        },
+        "<parameter 2 Name>": "<parameter 2 Value>"
+      }
+    }
+  ]}
+}
+```
+**Schedule trigger example**
+
+```JSON
+{
+  "properties": {
+    "name": "MyTrigger",
+    "type": "ScheduleTrigger",
+    "typeProperties": {
+      "recurrence": {
+        "frequency": "Hour",
+        "interval": 1,
+        "startTime": "2017-11-01T09:00:00-08:00",
+        "endTime": "2017-11-02T22:00:00-08:00"
+      }
+    },
+    "pipelines": [{
+        "pipelineReference": {
+          "type": "PipelineReference",
+          "referenceName": "SQLServerToBlobPipeline"
+        },
+        "parameters": {}
+      },
+      {
+        "pipelineReference": {
+          "type": "PipelineReference",
+          "referenceName": "SQLServerToAzureSQLPipeline"
+        },
+        "parameters": {}
+      }
+    ]
+  }
+}
+```
+
+[For more information](https://docs.microsoft.com/en-us/azure/data-factory/concepts-pipeline-execution-triggers)
+
+## Integration runtime
+
+`The Integration Runtime(IR)` is the compute infrastructure used by `Azure Data Factory` and `Azure Synapse` pipeline to provide the following data integration capabilities across difference network environments:
+
+* **Data Flow**: Execute a Data Flow in a managed Azure compute environment.
+* **Data movement**: Copy data acros data stores in a public or private (on premises or VPN). 
+* **Acitivity dispatch**: Dispatch and monitor transformation activities running on a variety of compute services such as `Azure Databricks`, `Azure HDInsignht`, `Azure SQL Database`, `SQL Service`, and more
+* **SSIS package execution**: Natively execute SQL Server ingetration services(SSIS) packages in a managed Azure compute enviroment.
+
+In `Data Factory` and `Synapse` pipeline:
+- **An activity** defines the `action` to be performed.
+- **A linked service** defines a target `data store` or a `compute service`.
+- **An integration runtime** provides the `bridge` between `activities` and `linked services`.
+
+It's referenced by the linked service or activity, and provides the compute environment where the activity is either run directly or dispatched. This allows the activity to be performed in the closest possible region to the target data store or compute service to maximize performance while also allowing flexibility to meet security and compliance requirements.
+
+**Integration runtime types**
+* Azure
+* Self-hosted
+* Azure-SSIS
+
+The capabilities and network support for each the integration runtime types:
+| **IR type** | **Public Network Support** | **Private Link Support** |
+| Azure       | Data Flow                  | Data Flow                |
+                Data movement                Data movement
+                Activity dispatch            Activity dispatch
+| Self-hosted | Data movement              | Data movement            |
+                Acitivty dispatch            Activity dispatch
+
+

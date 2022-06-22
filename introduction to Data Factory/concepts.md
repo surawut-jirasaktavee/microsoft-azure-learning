@@ -413,10 +413,10 @@ The capabilities and network support for each the integration runtime types:
 **IR type** | **Public Network Support** | **Private Link Support** |
 ------------|----------------------------|--------------------------|
 Azure       | Data Flow                  | Data Flow                |
-            | Data movement              | Data movement            |
-            | Activity dispatch          | Activity dispatch        |
+              Data movement                Data movement            
+              Activity dispatch            Activity dispatch        
 Self-hosted | Data movement              | Data movement            |
-            | Acitivty dispatch          | Activity dispatch        |
+              Acitivty dispatch            Activity dispatch        
 Azure-SSI   | SSIS packages execution    | SSIS package execution   |
  
 

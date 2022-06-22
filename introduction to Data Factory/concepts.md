@@ -411,7 +411,7 @@ It's referenced by the linked service or activity, and provides the compute envi
 The capabilities and network support for each the integration runtime types:
 
 **IR type** | **Public Network Support** | **Private Link Support** |
----------------------------------------------------------------------
+------------|----------------------------|--------------------------|
 Azure       | Data Flow                  | Data Flow                |
             | Data movement              | Data movement            |
             | Activity dispatch          | Activity dispatch        |

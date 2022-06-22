@@ -444,7 +444,7 @@ A self-hosted IR is capable of:
 * Running copy activity between a cloud data stores and a data store in private network
 * Dispatching the transform activities against compute resources in on-premises or Azure Virtual Network [transform activities](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime#self-hosted-integration-runtime)
 
-**Self-hosted IR network environment*
+**Self-hosted IR network environment**
 The self-hosted integration runtime only makes outbound HTTP-based connections to the internet. Need to install a self-hosted IR in on-premises environment behind a firewall, or inside a virtual private network.
 
 **Self-hosted IR compute resourec and scaling**
